@@ -1,1 +1,4 @@
 .idea
+contract_model/node_modules
+contract_model/package-lock.json
+/contract_model/.gitignore
