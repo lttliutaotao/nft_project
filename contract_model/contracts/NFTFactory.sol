@@ -10,8 +10,18 @@ contract NFTFactory {
     // 将每个集合地址映射到它的创建者
     mapping(address => address) public creatorOf;
 
+    address private owner;
+
     event CollectionCreated(address indexed collection, address indexed creator, string name, string symbol);
     event NFTMinted(address indexed collection, address indexed to, uint256 indexed tokenId, string tokenURI);
+
+    constructor(){
+        owner = msg.sender;
+    }
+
+    function getOwner() external view returns(address) {
+        return owner;
+    }
 
     /// @notice 部署一个新的 ERC721Template 合约
     function createCollection(string calldata name, string calldata symbol) external {
